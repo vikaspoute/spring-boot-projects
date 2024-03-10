@@ -3,18 +3,18 @@ package com.springboot.blog.exception;
 import lombok.Getter;
 import org.springframework.http.HttpStatus;
 
-public class BlogAPIException extends RuntimeException {
+public class APIException extends RuntimeException {
 
     @Getter
     private final HttpStatus status;
     private final String message;
 
-    public BlogAPIException(HttpStatus status, String message) {
+    public APIException(HttpStatus status, String message) {
         this.status = status;
         this.message = message;
     }
 
-    public BlogAPIException(String message, HttpStatus status, String message1) {
+    public APIException(String message, HttpStatus status, String message1) {
         super(message);
         this.status = status;
         this.message = message1;

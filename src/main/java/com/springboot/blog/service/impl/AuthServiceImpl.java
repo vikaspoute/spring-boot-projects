@@ -2,7 +2,7 @@ package com.springboot.blog.service.impl;
 
 import com.springboot.blog.entity.Role;
 import com.springboot.blog.entity.User;
-import com.springboot.blog.exception.BlogAPIException;
+import com.springboot.blog.exception.APIException;
 import com.springboot.blog.payload.LoginDto;
 import com.springboot.blog.payload.RegisterDto;
 import com.springboot.blog.repository.RoleRepository;
@@ -56,11 +56,11 @@ public class AuthServiceImpl implements AuthService {
 
         // add check for username exists in database
         if (userRepository.existsByUsername(registerDto.getUsername()))
-            throw new BlogAPIException(HttpStatus.BAD_REQUEST, "Username is already exists!.");
+            throw new APIException(HttpStatus.BAD_REQUEST, "Username is already exists!.");
 
         // add check for email exists in database
         if (userRepository.existsByEmail(registerDto.getEmail()))
-            throw new BlogAPIException(HttpStatus.BAD_REQUEST, "Email is already exists!.");
+            throw new APIException(HttpStatus.BAD_REQUEST, "Email is already exists!.");
 
         User user = new User();
         user.setName(registerDto.getName());
